@@ -11,6 +11,9 @@ function App() {
       <main>
         Product
       </main>
+      <main>
+        Product
+      </main>
 
       <footer>
         All rights is reserved.
