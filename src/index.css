@@ -18,7 +18,7 @@ select,
 button,
 textarea {
   font-family: Montserrat, Helvetica, Arial, sans-serif;
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
 }
 a {
   text-decoration: none;
@@ -160,7 +160,6 @@ footer {
 }
 .cart-items li div:last-child {
   flex: 1;
-  /* still dont know what is happening here */
 }
 .right {
   text-align: right;
@@ -200,7 +199,6 @@ input {
 
 /* Product modal details */
 .product-details {
-  /* next to each other */
   display: flex;
   /* responsive */
   flex-wrap: wrap;
@@ -218,7 +216,7 @@ input {
   flex: 1 1;
   margin: 1rem;
 }
-.close-modal{
+.close-modal {
   position: absolute;
   right: 1rem;
   top: 2.5rem;

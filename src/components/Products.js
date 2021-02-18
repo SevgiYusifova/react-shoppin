@@ -8,7 +8,7 @@ export default class Products extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: null, //modal visibility depend on the product,writed this because of the modal
+      products: null,
     };
   }
   openModal = (product) => {
@@ -50,7 +50,6 @@ export default class Products extends Component {
         </Fade>
         {product && (
           <Modal isOpen={true} onRequestClose={this.closeModal}>
-            {/* //onRequestClose and isOpen came from modal I guess */}
             <Zoom>
               <button className="close-modal" onClick={this.closeModal}>
                 x
@@ -73,10 +72,15 @@ export default class Products extends Component {
                   </p>
                   <div className="product-price">
                     <div>{formatCurrency(product.price)}</div>
-                    <button className="button primary" onClick={()=>{
-                      this.props.addToCart(product);
-                      this.closeModal();
-                    }}>Add to cart</button>
+                    <button
+                      className="button primary"
+                      onClick={() => {
+                        this.props.addToCart(product);
+                        this.closeModal();
+                      }}
+                    >
+                      Add to cart
+                    </button>
                   </div>
                 </div>
               </div>

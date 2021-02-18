@@ -1,4 +1,3 @@
-//feature 1
 import React from "react";
 import Cart from "./components/Cart";
 import Filter from "./components/Filter";
@@ -18,19 +17,17 @@ class App extends React.Component {
     };
   }
   createOrder = (order) => {
-    alert("need to save order for" +  order.name);
+    alert("need to save order for" + order.name);
   };
   removeFromCart = (product) => {
     const cartItems = this.state.cartItems.slice();
-    // instances of cart items
     this.setState({
       cartItems: cartItems.filter((x) => x._id !== product._id),
     });
     localStorage.setItem(
       "cartItems",
       JSON.stringify(cartItems.filter((x) => x._id !== product._id))
-    ); //1st is key,2nd is value
-    //we set the filter data inside the state, because of the filter we use this.state.cartItems
+    );
   };
   addToCart = (product) => {
     const cartItems = this.state.cartItems.slice();
@@ -44,7 +41,7 @@ class App extends React.Component {
     if (!alreadyIncart) {
       cartItems.push({ ...product, count: 1 });
     }
-    this.setState({ cartItems }); //update state,setting state
+    this.setState({ cartItems }); //update state
     localStorage.setItem("cartItems", JSON.stringify(cartItems)); //1st is key,2nd is value
   };
   sortProducts = (event) => {
@@ -69,7 +66,6 @@ class App extends React.Component {
     }));
   };
   filterProducts = (event) => {
-    //method(arrow functions) let u access the setstate method
     if (event.target.value === "") {
       this.setState({ size: event.target.value, products: data.products });
     } else {
