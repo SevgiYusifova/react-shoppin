@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import Cart from "./components/Cart";
 import Filter from "./components/Filter";
 import Products from "./components/Products";
-import data from "./data.json";
+import data from "./data.json";//can delete, because come from backend
 import store from './store'
 
 class App extends React.Component {
@@ -15,8 +15,8 @@ class App extends React.Component {
       cartItems: localStorage.getItem("cartItems")
         ? JSON.parse(localStorage.getItem("cartItems"))
         : [],
-      size: "",
-      sort: "",
+      // size: "",
+      // sort: "",come from redux
     };
   }
   createOrder = (order) => {
@@ -49,40 +49,40 @@ class App extends React.Component {
     this.setState({ cartItems }); //update state,setting state
     localStorage.setItem("cartItems", JSON.stringify(cartItems)); //1st is key,2nd is value
   };
-  sortProducts = (event) => {
-    const sort = event.target.value;
-    this.setState((state) => ({
-      sort: sort,
-      products: this.state.products
-        .slice()
-        .sort((a, b) =>
-          sort === "lowest"
-            ? a.price > b.price
-              ? 1
-              : -1
-            : sort === "highest"
-            ? a.price < b.price
-              ? 1
-              : -1
-            : a._id < b._id
-            ? 1
-            : -1
-        ),
-    }));
-  };
-  filterProducts = (event) => {
-    //method(arrow functions) let u access the setstate method
-    if (event.target.value === "") {
-      this.setState({ size: event.target.value, products: data.products });
-    } else {
-      this.setState({
-        size: event.target.value,
-        products: data.products.filter(
-          (product) => product.availableSizes.indexOf(event.target.value) >= 0
-        ),
-      });
-    }
-  };
+  // sortProducts = (event) => {
+  //   const sort = event.target.value;
+  //   this.setState((state) => ({
+  //     sort: sort,
+  //     products: this.state.products
+  //       .slice()
+  //       .sort((a, b) =>
+  //         sort === "lowest"
+  //           ? a.price > b.price
+  //             ? 1
+  //             : -1
+  //           : sort === "highest"
+  //           ? a.price < b.price
+  //             ? 1
+  //             : -1
+  //           : a._id < b._id
+  //           ? 1
+  //           : -1
+  //       ),
+  //   }));
+  // };
+  // filterProducts = (event) => {
+  //   //method(arrow functions) let u access the setstate method
+  //   if (event.target.value === "") {
+  //     this.setState({ size: event.target.value, products: data.products });
+  //   } else {
+  //     this.setState({
+  //       size: event.target.value,
+  //       products: data.products.filter(
+  //         (product) => product.availableSizes.indexOf(event.target.value) >= 0
+  //       ),
+  //     });
+  //   }
+  // }; no need because we moved these to actions
   render() {
     return (
       <Provider store={store}>
@@ -95,14 +95,15 @@ class App extends React.Component {
           <div className="content">
             <div className="main">
               <Filter
-                size={this.state.size}
-                sort={this.state.sort}
-                count={this.state.products.length}
-                filterProducts={this.filterProducts}
-                sortProducts={this.sortProducts}
+              //these came from redux store
+                // size={this.state.size}
+                // sort={this.state.sort}
+                // count={this.state.products.length}
+                // filterProducts={this.filterProducts}
+                // sortProducts={this.sortProducts}
               />
               <Products
-                products={this.state.products}
+                // products={this.state.products} come from redux store
                 addToCart={this.addToCart}
               />
             </div>
